@@ -1,3 +1,6 @@
 #!/bin/bash
 
-docker run -dv `pwd`:/src -p 8000:8000 btquanto/docker-flask-py3
+docker run --name basic \
+            -v `pwd`:/src \
+            -p 8000:8000 \
+            btquanto/docker-flask-py3

@@ -23,6 +23,6 @@ RUN apk add --no-cache \
 		libffi-dev \
 		postgresql-dev \
 	&& pip3 install --upgrade pip \
-	&& pip install uwsgi==2.0.15 flask==0.12.1
+	&& pip3 install uwsgi==2.0.15 flask==0.12.1
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
