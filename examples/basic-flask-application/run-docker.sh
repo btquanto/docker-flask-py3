@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker run -dv `pwd`:/src -p 8000:8000 btquanto/docker-flask-py3
+docker run -e APP_MODULE=app -v `pwd`:/src -p 8000:8000 btquanto/docker-flask-py3

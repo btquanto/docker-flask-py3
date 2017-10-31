@@ -1,16 +1,14 @@
-FROM alpine
+FROM alpine:3.6
 MAINTAINER Quan To <btquanto@gmail.com>
 
 # Variables
+ENV APP_USER app
+ENV APP_USER_UID 1000
+ENV APP_USER_GID 1000
 ENV APP_DIR /src
 ENV APP_MODULE application
 ENV APP_INSTANCE app
-
-# app dir
-RUN mkdir ${APP_DIR}
-WORKDIR ${APP_DIR}
-
-COPY entrypoint.sh /entrypoint.sh
+ENV SCRIPT /entrypoint.sh
 
 # install basic flask environment
 RUN apk add --no-cache \
@@ -22,7 +20,8 @@ RUN apk add --no-cache \
 		python3-dev \
 		libffi-dev \
 		postgresql-dev \
-	&& pip3 install --upgrade pip \
-	&& pip install uwsgi==2.0.15 flask==0.12.1
+	&& pip3 install --upgrade pip
 
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT [ "/bin/bash", "/entrypoint.sh" ]
