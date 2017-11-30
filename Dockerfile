@@ -21,6 +21,10 @@ RUN apk add --no-cache \
 		build-base \
 		python3-dev \
 		libffi-dev \
+		freetype-dev \
+		libpng-dev \
+		jpeg-dev \
+		libmagic \
 		postgresql-dev \
 	&& pip3 install --upgrade pip \
 	&& pip3 install uwsgi==2.0.15 flask==0.12.1
