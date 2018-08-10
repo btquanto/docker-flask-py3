@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.8
 MAINTAINER Quan To <btquanto@gmail.com>
 
 # Variables
@@ -16,6 +16,7 @@ COPY entrypoint.sh /entrypoint.sh
 RUN apk add --no-cache \
 		bash \
 		linux-headers \
+		ca-certificates \
 		g++ \
 		py3-pip \
 		build-base \
@@ -26,7 +27,6 @@ RUN apk add --no-cache \
 		jpeg-dev \
 		libmagic \
 		postgresql-dev \
-	&& pip3 install --upgrade pip \
-	&& pip3 install uwsgi==2.0.15 flask==0.12.1
+	&& pip3 install --upgrade pip wheel
 
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
